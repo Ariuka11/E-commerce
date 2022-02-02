@@ -102,7 +102,7 @@ const Button = styled.button`
   }
 `;
 
-const Product = () => {
+const Product = ({ cat, filter, sort }) => {
   return (
     <Container>
       <Navbar />
