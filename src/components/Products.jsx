@@ -18,8 +18,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const res = await axios.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : `http://localhost:5000/api/products`
+            ? `https://ecommerceapi-1.herokuapp.com/api/products?category=${cat}`
+            : `https://ecommerceapi-1.herokuapp.com/api/products`
         );
         setProducts(res.data);
         console.log({ products });
@@ -60,7 +60,7 @@ const Products = ({ cat, filters, sort }) => {
   return (
     <Container>
       {cat
-        ? filteredProducts.map((p) => <Product product={p} key={p.id} />)
+        ? filteredProducts.map((p) => <Product product={p} key={p.title} />)
         : products.map((p) => <Product product={p} key={p.id} />)}
     </Container>
   );

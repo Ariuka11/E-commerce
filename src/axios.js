@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/";
+const BASE_URL = "https://ecommerceapi-1.herokuapp.com/api/";
 const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjgzYjEzZTY1MjdjYjMzMDNhNWYwMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzkwMjI1MiwiZXhwIjoxNjQ0MTYxNDUyfQ.6F6rRattGTG2GM13ttYfPN9_EhM6rzjg-fyrTRg4lKI";
-
+  localStorage.length > 0 &&
+  JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
+    .accessToken;
 export const request = axios.create({
   baseURL: BASE_URL,
 });
