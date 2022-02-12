@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -69,12 +70,17 @@ const Button = styled.button`
 `;
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState();
+  const navigate = useNavigate();
+
   const handleClick = (direction) => {
     if (direction === "left") {
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
     } else {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
+  };
+  const handleShop = () => {
+    navigate("/products");
   };
   return (
     <Container>
@@ -90,7 +96,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOP NOW</Button>
+              <Button onClick={handleShop}>SHOP NOW</Button>
             </InfoContainer>
           </Slide>
         ))}

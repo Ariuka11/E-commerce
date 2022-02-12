@@ -54,6 +54,8 @@ const SearchContainer = styled.div`
 `;
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const userLoggedIn = useSelector((state) => state.user?.currentUser);
+
   return (
     <Container>
       <Wrapper>
@@ -70,8 +72,14 @@ const Navbar = () => {
           </Center>
         </Link>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          {!userLoggedIn ? (
+            <>
+              <MenuItem>REGISTER</MenuItem>
+              <MenuItem>SIGN IN</MenuItem>
+            </>
+          ) : (
+            <h3>{userLoggedIn.username}</h3>
+          )}
           <Link to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
