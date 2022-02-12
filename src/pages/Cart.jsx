@@ -170,6 +170,7 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
+        console.log("0", res);
       } catch (err) {
         console.log(err);
       }
